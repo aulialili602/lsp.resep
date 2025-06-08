@@ -57,7 +57,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Dapur Mamake</span>
+      <span class="brand-text font-weight-light">Dapur Mamak"e</span>
     </a>
 
     <!-- Sidebar -->
@@ -138,10 +138,10 @@
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Kategori</label>
                     <div class="col-8">
-                    <select class="form-select form-control" aria-label="Default select example" name="kategori" required>
+                    <select class="form-select form-control" aria-label="Default select example" name="kategori">
   <option selected>Pilih Kategori</option>
-  <option value="Makanan">Makanan</option>
-  <option value="Minuman">Minuman</option>
+  <option value="1">Makanan</option>
+  <option value="2">Minuman</option>
 </select>
                     </div>
                   </div>

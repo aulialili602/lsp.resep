@@ -127,7 +127,17 @@
                   </tr>
                   </thead>
                   <tbody>
-                
+                    <?php foreach ($resep as $resep):?>
+                  <tr>
+                    <td><?php echo $resep['nama']; ?></td>
+                    <td><?php echo $resep['alat']; ?></td>
+                    <td><?php echo $resep['bahan']; ?></td>
+                    <td><?php echo $resep['cara']; ?></td>
+                    <td><?php echo $resep['kategori']; ?></td>
+                    <td><a href="./hapus.resep.php?id_resep=<?php echo $resep['id_resep'] ?>" class="btn btn-danger">Hapus</a>
+                    
+                  </tr>
+                  <?php endforeach; ?>
                   </tfoot>
                 </table>
               </div>
