@@ -1,6 +1,6 @@
 <?php
 $host = "localhost"; //berjalan dilaptop sendiri
-$dbname = "db_lsp"; //nama database
+$dbname = "projek_lsp"; //nama database
 $username = "root";
 global $conn;
 

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
-  <title>index awal</title>
+  <title>Aneka Cinema | Movie</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,16 +26,12 @@
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
-  <!-- data table -->
-  <link rel="stylesheet" href="theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    
-    </style>
 </head>
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake brand-image img-circle elevation-3"  height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -48,7 +45,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -58,7 +55,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light" >Dapur Mamak'e</span>
+      <span class="brand-text font-weight-light">Dapur Mamak'e</span>
     </a>
 
     <!-- Sidebar -->
@@ -66,7 +63,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
           <a href="index-cineplex.php" class="d-block">Dashboard</a>
@@ -76,101 +73,125 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-</ul>
-</nav>
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <!-- <li class="nav-item menu-open">
+            
+      </nav> -->
+      <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><strong>Dapur Mamak'e </strong></h1>
+            <h1 class="m-0"><strong>Dapur Mamak'e</strong></h1>
           </div><!-- /.col -->
-        
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            </ol>
           </div><!-- /.col -->
-          <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
-          <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
-  <a href="form.add.resep.php" style="color: white; text-decoration: none;">Tambahkan Resep Baru</a>
-</button>
-
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+    </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-            <h2></h2>
-          <!-- ./col -->
-        </div>
-
-        <!-- tabel riwayat input data film-->
-        <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Riwayat Input Resep</h3>
-              </div>
-        <div class="card-body">
-
-                <table id="tabelRiwayat" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Nama</th>
-                    <th>Alat</th>
-                    <th>Bahan</th>
-                    <th>Cara</th>
-                    <th>Kategori</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($resep as $resep):?>
-                  <tr>
-                    <td><?php echo $resep['nama']; ?></td>
-                    <td><?php echo $resep['alat']; ?></td>
-                    <td><?php echo $resep['bahan']; ?></td>
-                    <td><?php echo $resep['cara']; ?></td>
-                    <td><?php echo $resep['kategori']; ?></td>
-                    <td><a href="./hapus.resep.php?id_resep=<?php echo $resep['id_resep'] ?>" class="btn btn-danger">Hapus</a>
-                    
-                  </tr>
-                  <?php endforeach; ?>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box" style="background-color: #99090c;">
+              
             </div>
+            
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6 p-4">
+          <div class="title">
+                <h2 class="m-0"><strong><?php echo $film['judul']; ?></strong></h2>
+                <h4><?php echo $film['genre']; ?></h4>
+          </div>
+            <div class="box-info row">
+                <div class="col-6"><?php echo $film['durasi']; ?>menit</div>
+                <div class="col-6"><?php echo $film['studio']; ?></div>
+            </div>
+            <div>
+              <div><?php echo $film['usia']; ?></div>
+            </div>
+            <div class="harga pt-3">
+            <p><strong>Rp <?php echo $film['harga']; ?></strong></p>
+            </div>
+          </div> 
+         
+          <div class="sinopsis p-3">
+          <p><?php echo $film['sinopsis']; ?></p>
+          </div>
+          
+          <div class="container text-center">
+  <div class="row">
+    <div class="col"><button type="button" class="btn btn-outline-secondary"><?php echo date("Y-m-d"); ?></button></div>
+<div class="container text-center mt-3">
+  <div class="row">
+    <div class="col-12 mb-2">
+      <h5 class="text-white">Jam Tayang</h5>
+    </div>
+    <?php foreach ($jam_tayang as $jam): ?>
+      <div class="col-3">
+        <button class="btn btn-outline-light mb-2"><?php echo $jam; ?></button>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
 
+</div>
+          
+            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>" style=" color: white;">Beli Tiket</a></button>
+          
+        <!-- /.row -->
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <!-- <section class="col-lg-7 connectedSortable"> -->
-            <!-- Custom tabs (Charts with tabs)-->
-            <!-- <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div> -->
-              
+          
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <!-- Morris chart - Sales -->
+                  
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+
+            
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -213,8 +234,5 @@
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
-<script src="theme/plugins/flot/jquery.flot.js"></script>
-<script src="theme/plugins/flot/plugins/jquery.flot.pie.js"></script>
-<script src="theme/plugins/datatables/jquery.dataTables.min.js"></script>
 </body>
 </html>
