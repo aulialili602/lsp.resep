@@ -1,3 +1,11 @@
+<?php
+  include 'koneksi.php';
+  $stmt = $conn->prepare("SELECT * FROM kategori");
+  $stmt->execute();
+  $kategori = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,10 +146,11 @@
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Kategori</label>
                     <div class="col-8">
-                    <select class="form-select form-control" aria-label="Default select example" name="kategori">
+                    <select class="form-select form-control" aria-label="Default select example" name="kategori" required >
   <option selected>Pilih Kategori</option>
-  <option value="1">Makanan</option>
-  <option value="2">Minuman</option>
+  <?php foreach ($kategori as $kategori): ?>
+                      <option value="<?php echo $kategori['id_kategori']; ?>"><?php echo $kategori['nama_kategori']; ?></option>
+                      <?php endforeach; ?>
 </select>
                     </div>
                   </div>

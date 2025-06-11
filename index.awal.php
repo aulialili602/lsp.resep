@@ -1,3 +1,14 @@
+<?php
+    include 'koneksi.php';
+
+    $stmt = $conn->prepare("SELECT resep.*, kategori.nama_kategori 
+                        FROM resep 
+                        JOIN kategori ON resep.id_kategori = kategori.id_kategori");
+
+    $stmt->execute();
+    $resep = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,15 +139,15 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($resep as $resep):?>
+                    <?php foreach ($resep as $r):?>
                   <tr>
-                    <td><?php echo $resep['nama']; ?></td>
-                    <td><?php echo $resep['alat']; ?></td>
-                    <td><?php echo $resep['bahan']; ?></td>
-                    <td><?php echo $resep['cara']; ?></td>
-                    <td><?php echo $resep['kategori']; ?></td>
-                    <td><a href="./hapus.resep.php?id_resep=<?php echo $resep['id_resep'] ?>" class="btn btn-danger">Hapus</a>
-                    
+                    <td><?php echo $r['nama']; ?></td>
+                    <td><?php echo $r['alat']; ?></td>
+                    <td><?php echo $r['bahan']; ?></td>
+                    <td><?php echo $r['cara']; ?></td>
+                    <td><?php echo $r['nama_kategori']; ?></td>
+                    <td><a href="./hapus.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-danger">Hapus</a>
+                    <td><a href="./edit.resep.php?id_resep=<?php echo $r['id_edit'] ?>" class="btn btn-warning">Edit</a>
                   </tr>
                   <?php endforeach; ?>
                   </tfoot>
