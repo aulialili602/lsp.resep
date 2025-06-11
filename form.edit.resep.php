@@ -1,20 +1,9 @@
-<?php
-    include 'koneksi.php';
-
-    $stmt = $conn->prepare("SELECT resep.*, kategori.nama_kategori 
-                        FROM resep 
-                        JOIN kategori ON resep.id_kategori = kategori.id_kategori");
-
-    $stmt->execute();
-    $resep = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
-  <title>index awal</title>
+  <title>Edit resep</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,8 +25,7 @@
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
-  <!-- data table -->
-  <link rel="stylesheet" href="theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <style>
     
     </style>
 </head>
@@ -45,7 +33,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake brand-image img-circle elevation-3"  height="60" width="60">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -59,7 +47,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-     
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -68,8 +56,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light" >Dapur Mamak'e</span>
+      <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Dapur Mamak"e</span>
     </a>
 
     <!-- Sidebar -->
@@ -80,15 +68,14 @@
           <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="index-cineplex.php" class="d-block">Dashboard</a>
+          <a href="index.awal.php" class="d-block">Dashboard </a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-</ul>
-</nav>
+          
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -100,86 +87,80 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><strong>Dapur Mamak'e </strong></h1>
+            <h1 class="m-0"><strong>Dapur Mamak'e</strong></h1>
           </div><!-- /.col -->
-        
+          <div class="col-6">
+            <ol class="breadcrumb float-sm-right">
+            </ol>
           </div><!-- /.col -->
-          <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
-          <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
-  <a href="form.add.resep.php" style="color: white; text-decoration: none;">Tambahkan Resep Baru</a>
-</button>
-
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+    </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-          <!-- ./col -->
-        </div>
-
-        <!-- tabel riwayat input data film-->
         <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Riwayat Input Resep</h3>
-              </div>
-        <div class="card-body">
-
-                <table id="tabelRiwayat" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Nama</th>
-                    <th>Alat</th>
-                    <th>Bahan</th>
-                    <th>Cara</th>
-                    <th>Kategori</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($resep as $r):?>
-                  <tr>
-                    <td><?php echo $r['nama']; ?></td>
-                    <td><?php echo $r['alat']; ?></td>
-                    <td><?php echo $r['bahan']; ?></td>
-                    <td><?php echo $r['cara']; ?></td>
-                    <td><?php echo $r['nama_kategori']; ?></td>
-                    <td><a href="./hapus.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-danger">Hapus</a>
-                    <td><a href="./form.edit.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-Secondary">Edit</a>
-                  </tr>
-                  <?php endforeach; ?>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+        
+            <div class="card-header">
+            <h4 class="card-title">
+                Edit Resep
+            </h4>
             </div>
+            <div class="card-body">
+                <form class="form-horizontal" method="POST" action="edit.resep.php"  enctype="multipart/form-data">
+                    <input type="hidden" name="id_resep" value="<?php echo $resep['id_resep']; ?>">
 
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <!-- <section class="col-lg-7 connectedSortable"> -->
-            <!-- Custom tabs (Charts with tabs)-->
-            <!-- <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div> -->
-              
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Nama</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" name="nama">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Alat</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" name="alat">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Bahan</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" name="bahan" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Cara</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" name="cara">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Kategori</label>
+                    <div class="col-8">
+                    <select class="form-select form-control" aria-label="Default select example" name="kategori" required >
+  <option selected>Pilih Kategori</option>
+ <option value="1">Makanan</option>
+ <option value="2">Minuman</option>
+</select>
+                    </div>
+                  </div>
+
+        <button type="submit" class="btn btn-block btn-danger" style="width: 80px; margin: 10px;">Simpan</button>
+            </div>
+            </form>
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -223,8 +204,5 @@
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
-<script src="theme/plugins/flot/jquery.flot.js"></script>
-<script src="theme/plugins/flot/plugins/jquery.flot.pie.js"></script>
-<script src="theme/plugins/datatables/jquery.dataTables.min.js"></script>
 </body>
 </html>
