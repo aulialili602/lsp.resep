@@ -2,7 +2,7 @@
     include 'koneksi.php';
 
     $stmt = $conn->prepare("SELECT resep.*, kategori.nama_kategori 
-                        FROM resep 
+                        FROM resep
                         JOIN kategori ON resep.id_kategori = kategori.id_kategori");
 
     $stmt->execute();
@@ -135,6 +135,7 @@
                     <th>Cara</th>
                     <th>Kategori</th>
                     <th>Aksi</th>
+                    <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -226,5 +227,20 @@
 <script src="theme/plugins/flot/jquery.flot.js"></script>
 <script src="theme/plugins/flot/plugins/jquery.flot.pie.js"></script>
 <script src="theme/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#tabelRiwayat').DataTable({
+      "language": {
+        "search": "Cari:",
+        "lengthMenu": "Tampilkan _MENU_ entri",
+        "zeroRecords": "Data tidak ditemukan",
+        
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

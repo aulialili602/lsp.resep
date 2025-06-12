@@ -137,7 +137,9 @@ if (!$resep) {
             <div class="card-body">
                 <form class="form-horizontal" method="POST" action="aksi.edit.php"  enctype="multipart/form-data">
                  <input type="hidden" name="id_resep" value="<?php echo $resep['id_resep']; ?>">
-                 <input type="hidden" name="status" value="aktif">
+                 
+
+
 
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Nama</label>
@@ -168,8 +170,8 @@ if (!$resep) {
                     <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example" name="kategori" required >
   <option selected>Pilih Kategori</option>
- <option value="makanan" <?php if($resep['id_kategori'] == '1') echo 'selected'; ?>>makanan</option>
- <option value="minuman" <?php if($resep['id_kategori'] == '2') echo 'selected'; ?>>minuman</option>
+ <option value="1" <?php if($resep['id_kategori'] == '1') echo 'selected'; ?>>makanan</option>
+ <option value="2" <?php if($resep['id_kategori'] == '2') echo 'selected'; ?>>minuman</option>
 </select>
                     </div>
                   </div>
