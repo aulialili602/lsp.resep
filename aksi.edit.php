@@ -1,29 +1,21 @@
 <?php
-include 'koneksi.php'; // file koneksi ke database
+    include 'koneksi.php';
 
-// Ambil data dari form
-$id_resep = $_POST['id_resep']; // pastikan field ini ada saat form edit
-$nama = $_POST['nama'];
-$alat = $_POST['alat'];
-$bahan = $_POST['bahan'];
-$cara = $_POST['cara'];
-$kategori = $_POST['kategori'];
-
-if  {
-    $query = "UPDATE resep SET 
-                nama = '$nama', 
-                alat = '$alat', 
-                bahan = '$bahan', 
-                cara = '$cara', 
-                kategori_id = '$kategori', 
-              WHERE id_resep = '$id_resep'";
-}
-$result = mysqli_query($conn, $query);
+    if(isset($_POST['simpan_edit'])) {
+        $id_resep = $_POST['id_resep'];
+        $nama = $_POST['nama'];
+        $alat = $_POST['alat'];
+        $bahan = $_POST['bahan'];
+        $cara = $_POST['cara'];
+        $id_kategori = $_POST['kategori'];
 
 
-if ($result) {
-    echo "<script>alert('Data berhasil diupdate!'); window.location.href='index-admin.php';</script>";
-} else {
-    echo "<script>alert('Gagal mengupdate data.'); history.back();</script>";
-}
+    $stmt = $conn->prepare("UPDATE resep SET nama = ?, alat = ?, bahan = ?, cara = ?, id_kategori = ? WHERE id_resep = ?");
+    $stmt->execute([$nama, $alat, $bahan, $cara, $id_kategori, $id_resep]);
+
+    // Setelah update berhasil, redirect ke halaman utama
+header("Location: index.awal.php");
+exit;
+    }
+
 ?>

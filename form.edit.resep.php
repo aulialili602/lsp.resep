@@ -1,3 +1,28 @@
+<?php
+include 'koneksi.php';
+
+// Pastikan parameter id_resep ada di URL
+if (!isset($_GET['id_resep'])) {
+    echo "ID resep tidak ditemukan!";
+    exit;
+}
+
+$id_resep = $_GET['id_resep'];
+
+// Ambil data resep dari database berdasarkan ID
+$stmt = $conn->prepare("SELECT * FROM resep WHERE id_resep = ?");
+$stmt->execute([$id_resep]);
+$resep = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Jika tidak ditemukan
+if (!$resep) {
+    echo "Data resep tidak ditemukan!";
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,31 +135,32 @@
             </h4>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" method="POST" action="edit.resep.php"  enctype="multipart/form-data">
-                    <input type="hidden" name="id_resep" value="<?php echo $resep['id_resep']; ?>">
+                <form class="form-horizontal" method="POST" action="aksi.edit.php"  enctype="multipart/form-data">
+                 <input type="hidden" name="id_resep" value="<?php echo $resep['id_resep']; ?>">
+                 <input type="hidden" name="status" value="aktif">
 
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Nama</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" name="nama">
+                      <textarea class="form-control" name="nama"><?php echo $resep['nama']; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Alat</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" name="alat">
+                      <textarea class="form-control" name="alat" rows="5"><?php echo $resep['alat']; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Bahan</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" name="bahan" >
+                      <textarea class="form-control" name="bahan" rows="5"><?php echo $resep['bahan']; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Cara</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" name="cara">
+                      <textarea class="form-control" name="cara" rows="5"><?php echo $resep['cara']; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -142,13 +168,13 @@
                     <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example" name="kategori" required >
   <option selected>Pilih Kategori</option>
- <option value="1">Makanan</option>
- <option value="2">Minuman</option>
+ <option value="makanan" <?php if($resep['id_kategori'] == '1') echo 'selected'; ?>>makanan</option>
+ <option value="minuman" <?php if($resep['id_kategori'] == '2') echo 'selected'; ?>>minuman</option>
 </select>
                     </div>
                   </div>
 
-        <button type="submit" class="btn btn-block btn-danger" style="width: 80px; margin: 10px;">Simpan</button>
+        <button type="submit" name="simpan_edit" class="btn btn-block btn-danger" style="width: 80px; margin: 10px;">Simpan</button>
             </div>
             </form>
             <!-- /.card -->

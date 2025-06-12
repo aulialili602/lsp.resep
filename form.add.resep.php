@@ -119,6 +119,8 @@
             </div>
             <div class="card-body">
                 <form class="form-horizontal" method="POST" action="simpan.resep.php"  enctype="multipart/form-data">
+                  <input type="hidden" name="id_resep" value="<?php echo $resep['id_resep']; ?>">
+
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Nama</label>
                     <div class="col-8">
