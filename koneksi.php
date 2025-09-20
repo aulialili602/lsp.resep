@@ -1,6 +1,6 @@
 <?php
 $host = "localhost"; //berjalan dilaptop sendiri
-$dbname = "db_jeklsp"; //nama database
+$dbname = "db_jeklsp2"; //nama database
 $username = "root";
 global $conn;
 

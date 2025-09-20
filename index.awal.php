@@ -146,8 +146,8 @@
                     <td><?php echo $r['bahan']; ?></td>
                     <td><?php echo $r['cara']; ?></td>
                     <td><?php echo $r['nama_kategori']; ?></td>
-                    <td><a href="./hapus.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-danger">Hapus</a>
-                    <td><a href="./form.edit.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-Secondary">Edit</a>
+                    <td><a href="./hapus.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-danger">Hapus</a></td>
+                    <td><a href="./form.edit.resep.php?id_resep=<?php echo $r['id_resep'] ?>" class="btn btn-Secondary">Edit</a></td>
                   </tr>
                   <?php endforeach; ?>
                   </tfoot>
